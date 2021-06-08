@@ -139,8 +139,8 @@ const FriendProfile = props => {
                                         : <button onClick={handleAddFriend}>add as a friend</button>
                                     : null
                                 }
-                                <button>searchs</button>
-                                <button>report</button>
+                                <button className={styles.hide_movil}>searchs</button>
+                                <button className={styles.hide_movil}>report</button>
                             </div>
                         </div>
                     </div>

@@ -6,7 +6,7 @@ const baseUrl = 'https://serene-meadow-09460.herokuapp.com/'
 export const changeDesc = createAsyncThunk(
     'user/changeDescription',
     async ({ userId, description, token }, thunkApi) => {
-       const { data } = await axios.put(`${baseUrl}users/${userId}`, { description }, { headers: { Authorization: `Bearer ${token}` } })
+       const { data } = await axios.put(`${baseUrl}api/users/${userId}`, { description }, { headers: { Authorization: `Bearer ${token}` } })
        const updatedUser = {...JSON.parse(localStorage.getItem('user')), description}
        localStorage.setItem('user', JSON.stringify(updatedUser))
      
@@ -37,7 +37,7 @@ export const userLogin = createAsyncThunk(
 export const loadUserPosts = createAsyncThunk(
     'user/loadUserPosts',
     async ({id, token}, thunkApi) => {
-        const { data } = await axios.get(`${baseUrl}post/${id}/posts`, { headers: { Authorization: `Bearer ${token}` } })
+        const { data } = await axios.get(`${baseUrl}api/post/${id}/posts`, { headers: { Authorization: `Bearer ${token}` } })
         return data
     }
 )
