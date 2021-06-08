@@ -302,4 +302,16 @@
   .details_container {
     width: 100%;
   }
+  .details {
+    height: 15%;
+  }
+  .friends_container {
+    height: 15%;
+  }
+  .middle {
+    width: 100%;
+  }
+  .first {
+    height: 50vh;
+  }
 }
