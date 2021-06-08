@@ -314,4 +314,11 @@
   .first {
     height: 50vh;
   }
+  .options_first {
+    width: 80%;
+  }
+  .options_second {
+    display: block;
+    width: 20%;
+  }
 }
