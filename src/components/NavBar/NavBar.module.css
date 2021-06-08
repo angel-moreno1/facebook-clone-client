@@ -190,5 +190,13 @@
   }
   .logo_input {
     width: 40%;
+    display: none;
+  }
+  .logo_input h5 {
+    display: none;
+  }
+  .nav_bar {
+    height: 7vh;
+    padding: 0rem;
   }
 }
