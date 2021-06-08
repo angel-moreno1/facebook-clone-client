@@ -298,3 +298,8 @@
   background-color: #e7f3ff;
   color: rgb(17, 133, 241);
 }
+@media screen and (max-width: 930px) {
+  .details_container {
+    width: 100%;
+  }
+}

@@ -1,7 +1,6 @@
 .navContainer {
   height: 8vh;
   width: 100%;
-  /* position: relative; */
   color: rgb(119, 119, 119);
 }
 .notification_container {
@@ -176,4 +175,20 @@
   outline: none;
   background: transparent;
   cursor: pointer;
+}
+@media screen and (max-width: 930px) {
+  .change_language_button {
+    display: none;
+  }
+  .nav_bar {
+    justify-content: space-evenly;
+  }
+  .mainIcones {
+    width: 20%;
+    margin: 0;
+    padding: 0;
+  }
+  .logo_input {
+    width: 40%;
+  }
 }

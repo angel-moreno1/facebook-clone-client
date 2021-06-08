@@ -49,3 +49,20 @@
   border: 1px solid rgb(17, 133, 241);
   color: rgb(37, 37, 37);
 }
+@media screen and (max-width: 930px) {
+  .register_button {
+    width: 100%;
+  }
+  .log_button {
+    width: 100%;
+  }
+  .input {
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+  }
+  .inputs_container {
+    width: 70%;
+  }
+}
