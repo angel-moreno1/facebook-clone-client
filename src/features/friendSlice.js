@@ -4,7 +4,7 @@ import axios from 'axios'
 export const LoadFriendInformation = createAsyncThunk(
     'friend/loadFriendInformation',
     async ({friendId, token}, thunkApi) => {
-        const { data } = await axios.get(`https://serene-meadow-09460.herokuapp.com/api/users/${friendId}`, { headers: { Authorization: `Bearer ${token}` } })
+        const { data } = await axios.get(`/api/users/${friendId}`, { headers: { Authorization: `Bearer ${token}` } })
 
         return data
     }
@@ -13,7 +13,7 @@ export const LoadFriendInformation = createAsyncThunk(
 export const LoadFriendPosts = createAsyncThunk(
     'friend/loadFriendPosts',
     async ({friendId, token}, thunkApi) => {
-        const { data } = await axios.get(`https://serene-meadow-09460.herokuapp.com/api/post/${friendId}/posts`, { headers: { Authorization: `Bearer ${token}` } })
+        const { data } = await axios.get(`/api/post/${friendId}/posts`, { headers: { Authorization: `Bearer ${token}` } })
 
         return data
     }

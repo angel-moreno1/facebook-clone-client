@@ -4,7 +4,7 @@ import axios from 'axios'
 export const newComment = createAsyncThunk(
     'comments/newComment',
     async ({ id, text, token }, thunkApi) => {
-        const { data } = await axios.put(`https://serene-meadow-09460.herokuapp.com/api/post/${id}/comment`, { text }, { headers: { Authorization: `Bearer ${token}` } })
+        const { data } = await axios.put(`/api/post/${id}/comment`, { text }, { headers: { Authorization: `Bearer ${token}` } })
 
         return data
     }
@@ -13,7 +13,7 @@ export const newComment = createAsyncThunk(
 export const loadComments = createAsyncThunk(
     'comments/loadComments',
     async ({ id, token }, thunkApi) => {
-        const { data } = await axios.get(`https://serene-meadow-09460.herokuapp.com/api/post/${id}`, { headers: { Authorization: `Bearer ${token}` } })
+        const { data } = await axios.get(`/api/post/${id}`, { headers: { Authorization: `Bearer ${token}` } })
 
         return data.comments ? data.comments : []
     }

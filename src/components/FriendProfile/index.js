@@ -26,7 +26,7 @@ const FriendProfile = props => {
     const { friends, isLoadingFriends, hasErrorFriends } = useSelector(selectHomeState)
 
     const handleAddFriend = () => {
-        axios.put('https://serene-meadow-09460.herokuapp.com/api/users/friend/add', {friendId: friendInformation._id}, { headers: { Authorization: `Bearer ${user.token}` } })
+        axios.put('/api/users/friend/add', {friendId: friendInformation._id}, { headers: { Authorization: `Bearer ${user.token}` } })
             .then((r) => {
                 dispatch(addAsAFriend(user.id))
             })
@@ -210,7 +210,7 @@ const FriendProfile = props => {
                                  : hasErrorFriends
                                     ? <span>Was an error</span>
                                     : friends.map(
-                                        friend => <div>
+                                        friend => <div key={friend._id}>
                                             <Link to={`/account/profile/${friend._id}`}>
                                             <div className={styles.friend_card}>
 

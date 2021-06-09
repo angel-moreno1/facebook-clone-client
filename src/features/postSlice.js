@@ -5,7 +5,7 @@ import { addUserPost } from './userSlice'
 export const loadManyPosts = createAsyncThunk(
     'posts/loadInitialPosts',
     async ({token, page}, thunkApi) => {
-        const { data } = await axios.get(`https://serene-meadow-09460.herokuapp.com/api/post?page=${page}`, { headers: { Authorization: `Bearer ${token}` } }) 
+        const { data } = await axios.get(`/api/post?page=${page}`, { headers: { Authorization: `Bearer ${token}` } }) 
         return data
     }
 )
@@ -14,7 +14,7 @@ export const cratePost = createAsyncThunk(
     'posts/createPost',
     async ({ postData, socket, token }, { dispatch }) => {
         const { data } = await axios.post(
-            'https://serene-meadow-09460.herokuapp.com/api/post/',
+            '/api/post/',
             postData,
             { headers: { Authorization: `Bearer ${token}` } }
         )

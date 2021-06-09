@@ -10,7 +10,7 @@ const Verified = (props) =>  {
 
     useEffect(() => {
         console.log('si')
-        axios.post(`https://serene-meadow-09460.herokuapp.com/account/verified/${token}`)
+        axios.post(`/account/verified/${token}`)
             .then((e) => {
                 setSuccess(true)
             })

@@ -14,7 +14,7 @@ const SinglePost = ({ match }) => {
     const [ postData, setPostData ] = useState({})
 
     useEffect(() => {
-        axios.get(`https://serene-meadow-09460.herokuapp.com/api/post/${match.params.id}`)
+        axios.get(`/api/post/${match.params.id}`)
             .then(
                 ({ data }) => setPostData(data)
             )

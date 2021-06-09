@@ -35,7 +35,7 @@ const Main = () => {
         if(name && lastName && email && password && repeatPw){
             if(password.trim() === repeatPw.trim()){
                 try {
-                    await axios.post('https://serene-meadow-09460.herokuapp.com/api/users/register', {name, lastName, email, password})
+                    await axios.post('/api/users/register', {name, lastName, email, password})
                     history.push('/email-verification')
                 } catch (error) {
                     setError('that email already exists')

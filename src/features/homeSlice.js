@@ -4,7 +4,7 @@ import axios from 'axios'
 export const getAllFriends = createAsyncThunk(
     'home/getAllFriends',
     async (userId, thunkApi) => {
-        const { data } = await axios.get(`https://serene-meadow-09460.herokuapp.com/api/users/${userId}/friend/all`)
+        const { data } = await axios.get(`/api/users/${userId}/friend/all`)
         
         return data
     }

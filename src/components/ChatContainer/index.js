@@ -29,7 +29,7 @@ const ChatContainer = props => {
         event.preventDefault()
         if(file) {
             setFile('')
-            axios.post('https://serene-meadow-09460.herokuapp.com/upload', form)
+            axios.post('/upload', form)
                 .then(({ data }) => {
                     socket.emit(
                         'messages',
@@ -69,7 +69,7 @@ const ChatContainer = props => {
                 )
                 const data = new FormData()
                 data.append('file', file)
-                axios.post('https://serene-meadow-09460.herokuapp.com/upload', data)
+                axios.post('/upload', data)
                     .then(({ data }) => {
                         socket.emit(
                             'messages',

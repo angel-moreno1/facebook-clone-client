@@ -23,8 +23,9 @@ const Actions = ({ likes, comments, id, sharedPostId }) => {
     const [ likesType, setLikesType  ] = useState(null)
     const [ clicked, setclicked ] = useState(false)
     const [ givingLikeLoading, setGivingLikeLoading ] = useState(false)
+    const [ openShare, setOpenShare ] = useState(false)
     const [ reactionsType, setReactionType ] = useState('like')
-    const [ text, setText ] = useState('Olvidarte tiene cierto grado de dificualtad')
+    const [ text, setText ] = useState('')
     const user = useSelector(selectUser)
     const [ showEmojisPicker, setShowEmojisPicker ] = useState(false)
     const [ activeshowEmojisPicker, setActiveshowEmojisPicker] = useState(false)
@@ -44,13 +45,12 @@ const Actions = ({ likes, comments, id, sharedPostId }) => {
             setGivingLikeLoading(true)
             setLikesLocal(prev => prev.filter(like => like.user !== user.id))
         }
-        axios.put(`https://serene-meadow-09460.herokuapp.com/api/post/${id}/like`, { type: 'like' }, { headers: { Authorization: `Bearer ${user.token}` } })
+        axios.put(`/api/post/${id}/like`, { type: 'like' }, { headers: { Authorization: `Bearer ${user.token}` } })
             .then(() => setGivingLikeLoading(false))
         setReactionType('like')
     }
 
     useEffect(() => {
-        console.log(likes)
         if(likes.length){
             likes.forEach(like => {
                 if(like.user === user.id){
@@ -99,7 +99,7 @@ const Actions = ({ likes, comments, id, sharedPostId }) => {
             const newLikesLocal = likesLocal.filter(like => like.user !== user.id)
             setLikesLocal([...newLikesLocal, {type, user: user.id}])
             setReactionType(type)   
-            axios.put(`https://serene-meadow-09460.herokuapp.com/api/post/${id}/u/like`, { type }, { headers: { Authorization: `Bearer ${user.token}` } })
+            axios.put(`/api/post/${id}/u/like`, { type }, { headers: { Authorization: `Bearer ${user.token}` } })
             .then(() => setGivingLikeLoading(false))
         }else {
             dispatch(giveLikePostLocal({id, user: user.id, type}))
@@ -109,13 +109,14 @@ const Actions = ({ likes, comments, id, sharedPostId }) => {
             )
             setLikesLocal([...likesLocal, {type, user: user.id}])
             setReactionType(type)   
-            axios.put(`https://serene-meadow-09460.herokuapp.com/api/post/${id}/like`, { type }, { headers: { Authorization: `Bearer ${user.token}` } })
+            axios.put(`/api/post/${id}/like`, { type }, { headers: { Authorization: `Bearer ${user.token}` } })
                 .then(() => setGivingLikeLoading(false))
         }
         setGivingLikeLoading(false)
     }
 
-    const sharedPost = () => {
+    const sharePost = () => {
+        setText('')
         if(text) {
             const data = new FormData()
             data.append('text', text)
@@ -127,14 +128,35 @@ const Actions = ({ likes, comments, id, sharedPostId }) => {
             }
             
             dispatch(cratePost({ postData: data, socket, token: user.token }))
-
+            
             setText('')  
+            setOpenShare(false)
         }
-      
+    }
+    
+    const sharedPostToggle = () => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        setOpenShare(prev => !prev)
     }
 
     return (
         <div>
+            {openShare && (
+                <>
+                    <div className={styles.share_post_container}>
+                        <span onClick={sharedPostToggle} className={styles.share_post_close}>X</span>
+                        <div className={styles.share_post_input_container}>
+                            <h3>Write something about this post</h3>
+                            <span>at least one letter</span>
+                            <textarea className={styles.share_post_input} placeholder='write something' value={text} onChange={({ target }) => setText(target.value)} />
+                        </div>
+                        <button  onClick={sharePost}>Share</button>
+                    </div>
+                    <div onClick={sharedPostToggle}  className={styles.share_post_container_capa}></div>
+                </>
+            )}
+    
             <div className={styles.post_actions}>
                 <div className={styles.reactions_comments}>
                     <span className={styles.reaction_reac_container}>
@@ -166,7 +188,16 @@ const Actions = ({ likes, comments, id, sharedPostId }) => {
                             { clicked ? `${liked === 1 ? `${user.name} ${user.lastName}` : `You and ${liked - 1} ${liked - 1 === 1 ? 'other' : 'others'}` }`  : liked === 0 ? 'Be the first to react' : liked }
                         </span>
                     </span>
+                    <div>
                     <span onClick={handleComment}>{comments.length} { translate('action-comments') }</span>
+                    <span className={styles.point}>
+                    </span>
+                      <span >
+                        100k Shares
+                    </span>
+                    </div>
+
+                    
                 </div>
                 <div className={styles.actions} onMouseLeave={onLeaveEmoji}>
                     <div className={styles.actions_emojis}  onClick={() => {}} style={showEmojisPicker ? { display: 'flex' } : { display: 'none'  }}>
@@ -232,11 +263,12 @@ const Actions = ({ likes, comments, id, sharedPostId }) => {
                     </svg>
                         { translate('action-comment') }
                     </button>
-                    <button onClick={sharedPost}>
+                    
+                    <button onClick={sharedPostToggle}>
                     <svg xmlns="http://www.w3.org/2000/svg" width='1rem' style={{ marginRight: '0.3rem' }}fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                     </svg>
-                        share
+                        Share
                     </button>
                 </div>
             </div>

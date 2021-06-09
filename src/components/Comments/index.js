@@ -18,7 +18,7 @@ const Comments = props => {
     useEffect(() => {
         if(shouldLoadComments) {        
             setLoading(true)
-            axios.get(`https://serene-meadow-09460.herokuapp.com/api/post/${id}`, { headers: { Authorization: `Bearer ${user.token}` } })
+            axios.get(`/api/post/${id}`, { headers: { Authorization: `Bearer ${user.token}` } })
                 .then(({ data }) => {
                     setComments(data.comments)
                     setLoading(false)
@@ -30,7 +30,7 @@ const Comments = props => {
     const makeComment = (setText, text) => {
         console.log('pasda')
         setText('')
-        axios.put(`https://serene-meadow-09460.herokuapp.com/api/post/${id}/comment`, { text }, { headers: { Authorization: `Bearer ${user.token}` } })
+        axios.put(`/api/post/${id}/comment`, { text }, { headers: { Authorization: `Bearer ${user.token}` } })
             .then(
                 ({ data }) => {
                     dispatch(updateCommentsLength({postId: id, newId: data._id}))

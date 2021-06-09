@@ -4,7 +4,7 @@ import axios from 'axios'
 export const loadVideosPost = createAsyncThunk(
     'videos/loadVideosPost',
     async (token, thunkApi) => {
-        const { data } = await axios.get('https://serene-meadow-09460.herokuapp.com/api/post/videos/all', { headers: { Authorization: `Bearer ${token}` } })
+        const { data } = await axios.get('/api/post/videos/all', { headers: { Authorization: `Bearer ${token}` } })
         return data
     }
 )

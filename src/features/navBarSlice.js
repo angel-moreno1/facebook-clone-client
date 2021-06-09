@@ -4,7 +4,7 @@ import axios from 'axios'
 export const searchUsers = createAsyncThunk(
     'navBar/searchUsers',
     async (query, _thunkApi) => {
-        const { data } = await axios.get(`https://serene-meadow-09460.herokuapp.com/api/users/find/user?query=${query}`)
+        const { data } = await axios.get(`/api/users/find/user?query=${query}`)
       
         return data
     }

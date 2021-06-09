@@ -124,15 +124,6 @@ const UserProfile = () => {
 
 
 const UserTop = props => {
-
-    
-//     PUT http://localhost:3001/api/users/608e5a5dc68ff8234cd15fb1 HTTP/1.1
-// Content-Type: application/json
-
-// {
-//     "profile_photo": "/uploads/1619805550792.jfif"
-// }
-
     const user = useSelector(selectUser)
     const { isLoadingUpdated } = useSelector(state => state.user)
     const [ form, file, onInputChange, setFile ] = useUpload('profile_photo')
@@ -143,7 +134,7 @@ const UserTop = props => {
 
     useEffect(() => {
         if(file) {
-            axios.put(`https://serene-meadow-09460.herokuapp.com/api/users/608e5a5dc68ff8234cd15fb1`, form, { headers: { Authorization: `Bearer ${user.token}` } })
+            axios.put(`/api/users/${user.id}`, form, { headers: { Authorization: `Bearer ${user.token}` } })
                 .then(
                     ({ data }) => {
                         const updatedUser = {...JSON.parse(localStorage.getItem('user')), profile_photo: data}

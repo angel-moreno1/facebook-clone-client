@@ -5,7 +5,7 @@ import axios from 'axios'
 export const createOrRedirectToChat = createAsyncThunk(
     'chat/createOrRedirectToChat',
     async ({ friendId, token }, _thunkApi) => {
-        const { data } = await axios.post('https://serene-meadow-09460.herokuapp.com/api/chat', { id: friendId }, { headers: { Authorization: `Bearer ${token}` } })
+        const { data } = await axios.post('/api/chat', { id: friendId }, { headers: { Authorization: `Bearer ${token}` } })
         
         return data
     }

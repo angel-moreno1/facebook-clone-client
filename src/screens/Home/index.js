@@ -30,7 +30,7 @@ const Home = () => {
     useEffect(() => {
         dispatch(loadLatestChats({id: user.id, token: user.token}))
 
-        axios.get(`https://serene-meadow-09460.herokuapp.com/api/users/user/suggestion/${user.id}`)
+        axios.get(`/api/users/user/suggestion/${user.id}`)
             .then(
                 ({ data }) => setSuggestions(data) 
             )

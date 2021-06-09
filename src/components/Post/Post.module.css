@@ -204,5 +204,13 @@
 .ow:hover {
   background: rgb(233, 233, 233);
 }
+.meta_time_line {
+  display: flex; 
+  justify-content: center;
+  align-items: center
+}
+.meta_time_line time {
+  margin-right: 0.3rem
+}
 @media screen and (max-width: 930px) {
 }

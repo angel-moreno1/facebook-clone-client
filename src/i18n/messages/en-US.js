@@ -12,7 +12,7 @@ export default {
         'contacts': 'contacts',
         'report-post': 'report this post',
         'action-like': 'like',
-        'action-comment': 'comment',
+        'action-comment': 'Comment',
         'action-reactions': 'reactions',
         'action-comments': 'comments',
         'respond': 'respond',
