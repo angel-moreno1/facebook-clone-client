@@ -14,6 +14,7 @@ import sadImg from '../../assets/sad.png'
 import angryImg from '../../assets/angry.png'
 import axios from 'axios'
 import socketContext from '../useSocketContext'
+import getShortenNumber from '../../utils/shortenLongNumber'
 
 const Actions = ({ likes, comments, id, sharedPostId }) => {
 
@@ -185,15 +186,15 @@ const Actions = ({ likes, comments, id, sharedPostId }) => {
                         
                         }
                         <span className={styles.info_reactions}>
-                            { clicked ? `${liked === 1 ? `${user.name} ${user.lastName}` : `You and ${liked - 1} ${liked - 1 === 1 ? 'other' : 'others'}` }`  : liked === 0 ? 'Be the first to react' : liked }
+                            { clicked ? `${liked === 1 ? `${user.name} ${user.lastName}` : `You and ${liked - 1} ${liked - 1 === 1 ? 'other' : 'others'}` }`  : liked === 0 ? 'Be the first to react' : getShortenNumber(liked) }
                         </span>
                     </span>
                     <div>
-                    <span onClick={handleComment}>{comments.length} { translate('action-comments') }</span>
+                    <span onClick={handleComment}>{getShortenNumber(comments.length.toString())} { translate('action-comments') }</span>
                     <span className={styles.point}>
                     </span>
                       <span >
-                        100k Shares
+                       {getShortenNumber('23908')} Shares
                     </span>
                     </div>
 

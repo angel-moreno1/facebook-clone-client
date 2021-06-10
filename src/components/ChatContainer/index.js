@@ -33,7 +33,7 @@ const ChatContainer = props => {
                 .then(({ data }) => {
                     socket.emit(
                         'messages',
-                        {chatId: currentConversationId, message: data.location, ref: currentChat.chatRef, isFile: true  }
+                        {chatId: currentConversationId, message: data.location, ref: currentChat.chatRef, isFile: true, from: user.id  }
                     )
                 }) 
         }
@@ -41,11 +41,14 @@ const ChatContainer = props => {
             setMessage('')
             socket.emit(
                 'messages',
-                {chatId: currentConversationId, message, ref: currentChat.chatRef }
+                {chatId: currentConversationId, message, ref: currentChat.chatRef, from: user.id }
             )  
         }
     }
-    
+    const test = () => {
+        socket.emit('test')
+    }
+
     const onEmojiClick = (_, emojiObject) => void setMessage(message + emojiObject.emoji)
     
     const recorderAudio = () => {
@@ -95,7 +98,7 @@ const ChatContainer = props => {
                 : <Skeleton width='100%' height='100%' circle={true} /> 
         }
     </div>
-    <h4>
+    <h4 onClick={test}>
         { 
             friend ? friend.name + ' '+friend.lastName : <Skeleton width={200} /> 
         }

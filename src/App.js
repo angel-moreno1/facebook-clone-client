@@ -44,6 +44,7 @@ const App = () => {
         }
       }
     })
+    socket.on('testServer', () => alert('workss!!!!!!!!!!!!!!'))
     socket.on('newMessageNotifycation', () => {
       const audio = new Audio('./new-message.mp3')
       audio.play()
