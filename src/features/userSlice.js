@@ -26,7 +26,7 @@ export const changeInfo = createAsyncThunk(
 export const userLogin = createAsyncThunk(
     'user/userLogin',
     async (userData, thunkApi) => {
-        const { data } = await axios.post(`/api/users/login`, userData)
+        const { data } = await axios.post(`${process.env.REACT_APP_HOST}/api/users/login`, userData)
 
         return data
     }
