@@ -27,7 +27,7 @@ export const userLogin = createAsyncThunk(
     'user/userLogin',
     async (userData, thunkApi) => {
         const { data } = await axios.post(`/api/users/login`, userData)
-        console.log(data)
+
         return data
     }
 )
