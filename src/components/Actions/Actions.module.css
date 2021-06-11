@@ -166,20 +166,21 @@
   color: rgb(121, 121, 121);
 }
 .actions_emojis {
-  width: 30%;
+  width: 34%;
   height: 2rem;
   position: absolute;
   top: -33%;
   left: 6%;
   background-color: transparent;
   z-index: 1000;
-  display: flex;
 }
 .actions_emojis img {
   cursor: pointer;
-  width: 1.6rem;
-  height: 1.6rem;
-  transition: transform 300ms;
+  width:100%;
+  height: 100%;
+  transition: transform 200ms;
+  margin: 0;
+  padding: 0
 }
 .actions_emojis img:hover {
   transform: scale(1.3);
