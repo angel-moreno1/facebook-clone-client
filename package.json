@@ -1,5 +1,4 @@
 {
-  "proxy": "https://serene-meadow-09460.herokuapp.com",
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
