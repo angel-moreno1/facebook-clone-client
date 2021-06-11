@@ -16,7 +16,7 @@ import axios from 'axios'
 import socketContext from '../useSocketContext'
 import getShortenNumber from '../../utils/shortenLongNumber'
 
-const Actions = ({ likes, comments, id, sharedPostId }) => {
+const Actions = ({ likes, comments, id, sharedPostId, userid }) => {
 
     const [ commentOpen, setCommentOpen ] = useState(false)
     const [ liked, setLiked ] = useState(likes.length)
@@ -276,7 +276,7 @@ const Actions = ({ likes, comments, id, sharedPostId }) => {
             <div className={styles.commentsContainer}>
                  {
                     commentOpen
-                        ? <Comments id={id} shouldLoadComments={comments.length >= 1} commentsLength={comments}/>
+                        ? <Comments userid={userid} id={id} shouldLoadComments={comments.length >= 1} commentsLength={comments}/>
                         : null
                 }
             </div>

@@ -191,7 +191,7 @@ const Post = props => {
                     : null
 
             }
-            <Actions likes={likes} id={id}  comments={comments}/>
+            <Actions userid={userid} likes={likes} id={id}  comments={comments}/>
         </div>
     )
 }
