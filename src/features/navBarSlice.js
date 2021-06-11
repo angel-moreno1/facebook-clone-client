@@ -4,7 +4,7 @@ import axios from 'axios'
 export const searchUsers = createAsyncThunk(
     'navBar/searchUsers',
     async (query, _thunkApi) => {
-        const { data } = await axios.get(`/api/users/find/user?query=${query}`)
+        const { data } = await axios.get(`${process.env.REACT_APP_HOST}/api/users/find/user?query=${query}`)
       
         return data
     }

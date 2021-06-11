@@ -4,7 +4,7 @@ import axios from 'axios'
 export const latestChatsFriendInformaiton = createAsyncThunk(
     'chat/currentChatFriend',
     async ({friend, token}, thunkApi) => {
-        const { data } = await axios.get(`api/users/${friend}`, { headers: { Authorization: `Bearer ${token}` } })
+        const { data } = await axios.get(`${process.env.REACT_APP_HOST}api/users/${friend}`, { headers: { Authorization: `Bearer ${token}` } })
 
         return { name: data.name, lastName: data.lastName }
     }
@@ -13,7 +13,7 @@ export const latestChatsFriendInformaiton = createAsyncThunk(
 export const loadLatestChats = createAsyncThunk(
     'chat/loadLatestChats',
     async ({id, token}, thunkApi) => {
-        const { data } = await axios.get(`/api/chat/${id}/latest`, { headers: { Authorization: `Bearer ${token}` } })
+        const { data } = await axios.get(`${process.env.REACT_APP_HOST}/api/chat/${id}/latest`, { headers: { Authorization: `Bearer ${token}` } })
 
         return data.chats
     }
@@ -22,7 +22,7 @@ export const loadLatestChats = createAsyncThunk(
 export const loadCurrentChat = createAsyncThunk(
     'chat/loadCurrentChat',
     async ({id, token}, thunkApi) => {
-        const { data } = await axios.get(`/api/chat/${id}`, { headers: { Authorization: `Bearer ${token}` } })
+        const { data } = await axios.get(`${process.env.REACT_APP_HOST}/api/chat/${id}`, { headers: { Authorization: `Bearer ${token}` } })
 
         return data
     }

@@ -134,7 +134,7 @@ const UserTop = props => {
 
     useEffect(() => {
         if(file) {
-            axios.put(`/api/users/${user.id}`, form, { headers: { Authorization: `Bearer ${user.token}` } })
+            axios.put(`${process.env.REACT_APP_HOST}/api/users/${user.id}`, form, { headers: { Authorization: `Bearer ${user.token}` } })
                 .then(
                     ({ data }) => {
                         const updatedUser = {...JSON.parse(localStorage.getItem('user')), profile_photo: data}

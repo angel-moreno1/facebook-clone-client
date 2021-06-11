@@ -35,7 +35,6 @@ const Login = () => {
 
     return (
         <div className={styles.container}>
-                <h1>{process.env.REACT_APP_HOST || 'hola'}</h1>
             <h1 className={styles.title}>{ translate('login-title') }</h1>
             <div className={styles.inputs_container}>
                 <input 

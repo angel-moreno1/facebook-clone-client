@@ -14,7 +14,7 @@ const SinglePost = ({ match }) => {
     const [ postData, setPostData ] = useState({})
 
     useEffect(() => {
-        axios.get(`/api/post/${match.params.id}`)
+        axios.get(`${process.env.REACT_APP_HOST}/api/post/${match.params.id}`)
             .then(
                 ({ data }) => setPostData(data)
             )

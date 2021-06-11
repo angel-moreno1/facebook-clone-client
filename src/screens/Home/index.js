@@ -30,7 +30,7 @@ const Home = () => {
     useEffect(() => {
         dispatch(loadLatestChats({id: user.id, token: user.token}))
 
-        axios.get(`/api/users/user/suggestion/${user.id}`)
+        axios.get(`${process.env.REACT_APP_HOST}/api/users/user/suggestion/${user.id}`)
             .then(
                 ({ data }) => setSuggestions(data) 
             )

@@ -26,7 +26,7 @@ const FriendProfile = props => {
     const { friends, isLoadingFriends, hasErrorFriends } = useSelector(selectHomeState)
 
     const handleAddFriend = () => {
-        axios.put('/api/users/friend/add', {friendId: friendInformation._id}, { headers: { Authorization: `Bearer ${user.token}` } })
+        axios.put(`${process.env.REACT_APP_HOST}/api/users/friend/add`, {friendId: friendInformation._id}, { headers: { Authorization: `Bearer ${user.token}` } })
             .then((r) => {
                 dispatch(addAsAFriend(user.id))
             })

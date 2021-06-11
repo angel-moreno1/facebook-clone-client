@@ -29,7 +29,7 @@ const ChatContainer = props => {
         event.preventDefault()
         if(file) {
             setFile('')
-            axios.post('/upload', form)
+            axios.post(`${process.env.REACT_APP_HOST}/upload`, form)
                 .then(({ data }) => {
                     socket.emit(
                         'messages',
@@ -72,7 +72,7 @@ const ChatContainer = props => {
                 )
                 const data = new FormData()
                 data.append('file', file)
-                axios.post('/upload', data)
+                axios.post(`${process.env.REACT_APP_HOST}/upload`, data)
                     .then(({ data }) => {
                         socket.emit(
                             'messages',

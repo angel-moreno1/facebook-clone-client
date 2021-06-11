@@ -3,7 +3,7 @@ import socketConnect from 'socket.io-client'
 
 const socketContext = createContext(
     { 
-      socket: socketConnect('https://serene-meadow-09460.herokuapp.com/'),
+      socket: socketConnect(`${process.env.REACT_APP_HOST}/`),
       deleteSocket: socket => {
         socket = {}
       }

@@ -5,7 +5,7 @@ import axios from 'axios'
 export const createOrRedirectToChat = createAsyncThunk(
     'chat/createOrRedirectToChat',
     async ({ friendId, token }, _thunkApi) => {
-        const { data } = await axios.post('/api/chat', { id: friendId }, { headers: { Authorization: `Bearer ${token}` } })
+        const { data } = await axios.post(`${process.env.REACT_APP_HOST}/api/chat`, { id: friendId }, { headers: { Authorization: `Bearer ${token}` } })
         
         return data
     }

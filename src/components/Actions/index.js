@@ -46,7 +46,7 @@ const Actions = ({ likes, comments, id, sharedPostId, userid }) => {
             setGivingLikeLoading(true)
             setLikesLocal(prev => prev.filter(like => like.user !== user.id))
         }
-        axios.put(`/api/post/${id}/like`, { type: 'like' }, { headers: { Authorization: `Bearer ${user.token}` } })
+        axios.put(`${process.env.REACT_APP_HOST}/api/post/${id}/like`, { type: 'like' }, { headers: { Authorization: `Bearer ${user.token}` } })
             .then(() => setGivingLikeLoading(false))
         setReactionType('like')
     }
@@ -100,7 +100,7 @@ const Actions = ({ likes, comments, id, sharedPostId, userid }) => {
             const newLikesLocal = likesLocal.filter(like => like.user !== user.id)
             setLikesLocal([...newLikesLocal, {type, user: user.id}])
             setReactionType(type)   
-            axios.put(`/api/post/${id}/u/like`, { type }, { headers: { Authorization: `Bearer ${user.token}` } })
+            axios.put(`${process.env.REACT_APP_HOST}/api/post/${id}/u/like`, { type }, { headers: { Authorization: `Bearer ${user.token}` } })
             .then(() => setGivingLikeLoading(false))
         }else {
             dispatch(giveLikePostLocal({id, user: user.id, type}))
@@ -110,7 +110,7 @@ const Actions = ({ likes, comments, id, sharedPostId, userid }) => {
             )
             setLikesLocal([...likesLocal, {type, user: user.id}])
             setReactionType(type)   
-            axios.put(`/api/post/${id}/like`, { type }, { headers: { Authorization: `Bearer ${user.token}` } })
+            axios.put(`${process.env.REACT_APP_HOST}/api/post/${id}/like`, { type }, { headers: { Authorization: `Bearer ${user.token}` } })
                 .then(() => setGivingLikeLoading(false))
         }
         setGivingLikeLoading(false)

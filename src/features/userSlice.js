@@ -4,7 +4,7 @@ import axios from 'axios'
 export const changeDesc = createAsyncThunk(
     'user/changeDescription',
     async ({ userId, description, token }, thunkApi) => {
-       const { data } = await axios.put(`/api/users/${userId}`, { description }, { headers: { Authorization: `Bearer ${token}` } })
+       const { data } = await axios.put(`${process.env.REACT_APP_HOST}/api/users/${userId}`, { description }, { headers: { Authorization: `Bearer ${token}` } })
        const updatedUser = {...JSON.parse(localStorage.getItem('user')), description}
        localStorage.setItem('user', JSON.stringify(updatedUser))
      
@@ -15,7 +15,7 @@ export const changeDesc = createAsyncThunk(
 export const changeInfo = createAsyncThunk(
     'user/changeInformation',
     async ({userId, info, token}, thunkApi) => {
-        const { data } = await   axios.put(`/api/users/${userId}`, info, { headers: { Authorization: `Bearer ${token}` } })
+        const { data } = await   axios.put(`${process.env.REACT_APP_HOST}/api/users/${userId}`, info, { headers: { Authorization: `Bearer ${token}` } })
 
         localStorage.setItem('user', JSON.stringify(data))
 
@@ -26,7 +26,7 @@ export const changeInfo = createAsyncThunk(
 export const userLogin = createAsyncThunk(
     'user/userLogin',
     async (userData, thunkApi) => {
-        const { data } = await axios.post(`/api/users/login`, userData)
+        const { data } = await axios.post(`${process.env.REACT_APP_HOST}/api/users/login`, userData)
 
         return data
     }
@@ -35,7 +35,7 @@ export const userLogin = createAsyncThunk(
 export const loadUserPosts = createAsyncThunk(
     'user/loadUserPosts',
     async ({id, token}, thunkApi) => {
-        const { data } = await axios.get(`/api/post/${id}/posts`, { headers: { Authorization: `Bearer ${token}` } })
+        const { data } = await axios.get(`${process.env.REACT_APP_HOST}/api/post/${id}/posts`, { headers: { Authorization: `Bearer ${token}` } })
         return data
     }
 )

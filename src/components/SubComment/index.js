@@ -30,7 +30,7 @@ const SubComment =  props => {
 
     const makeSubComment = event => {
         event.preventDefault()
-        axios.put(`/api/post/${commentId}/comment/sub`, { text: textLocal, respondTo: user._id  }, { headers: { Authorization: `Bearer ${token}` } })
+        axios.put(`${process.env.REACT_APP_HOST}/api/post/${commentId}/comment/sub`, { text: textLocal, respondTo: user._id  }, { headers: { Authorization: `Bearer ${token}` } })
         .then(({ data }) => handleAddSub(data) )
         .catch((r) => console.log(r))
         setTextLocal('')

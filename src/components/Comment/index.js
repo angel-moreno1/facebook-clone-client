@@ -43,7 +43,7 @@ const Comment = memo(props => {
 
     useEffect(() => {
      
-        axios.get(`/api/post/${props._id}/comments`)
+        axios.get(`${process.env.REACT_APP_HOST}/api/post/${props._id}/comments`)
             .then(({ data }) => {
                 setSubComments(data.subcomments)
             })
@@ -53,7 +53,7 @@ const Comment = memo(props => {
 
     const makeSubComment = event => {
         event.preventDefault()
-        axios.put(`/api/post/${props._id}/comment/sub`, { text, respondTo: props.user._id  }, { headers: { Authorization: `Bearer ${token}` } })
+        axios.put(`${process.env.REACT_APP_HOST}/api/post/${props._id}/comment/sub`, { text, respondTo: props.user._id  }, { headers: { Authorization: `Bearer ${token}` } })
         .then(({ data }) => {
             console.log(data)
             setSubComments(prev => [...prev, {...data}])

@@ -9,8 +9,7 @@ const Verified = (props) =>  {
     const token = props.match.params.token
 
     useEffect(() => {
-        console.log('si')
-        axios.post(`/account/verified/${token}`)
+        axios.post(`${process.env.REACT_APP_HOST}/account/verified/${token}`)
             .then((e) => {
                 setSuccess(true)
             })

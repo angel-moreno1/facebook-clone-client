@@ -20,7 +20,7 @@ const Comments = props => {
     useEffect(() => {
         if(shouldLoadComments) {        
             setLoading(true)
-            axios.get(`/api/post/${id}`, { headers: { Authorization: `Bearer ${user.token}` } })
+            axios.get(`${process.env.REACT_APP_HOST}/api/post/${id}`, { headers: { Authorization: `Bearer ${user.token}` } })
                 .then(({ data }) => {
                     setComments(data.comments)
                     setLoading(false)
@@ -32,7 +32,7 @@ const Comments = props => {
     const makeComment = (setText, text) => {
         
         setText('')
-        axios.put(`/api/post/${id}/comment`, { text }, { headers: { Authorization: `Bearer ${user.token}` } })
+        axios.put(`${process.env.REACT_APP_HOST}/api/post/${id}/comment`, { text }, { headers: { Authorization: `Bearer ${user.token}` } })
             .then(
                 ({ data }) => {
                     dispatch(updateCommentsLength({postId: id, newId: data._id}))

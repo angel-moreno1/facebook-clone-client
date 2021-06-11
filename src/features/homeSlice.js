@@ -4,7 +4,7 @@ import axios from 'axios'
 export const getAllFriends = createAsyncThunk(
     'home/getAllFriends',
     async (userId, thunkApi) => {
-        const { data } = await axios.get(`/api/users/${userId}/friend/all`)
+        const { data } = await axios.get(`${process.env.REACT_APP_HOST}/api/users/${userId}/friend/all`)
         
         return data
     }

@@ -4,7 +4,7 @@ import axios from 'axios'
 export const loadVideosPost = createAsyncThunk(
     'videos/loadVideosPost',
     async (token, thunkApi) => {
-        const { data } = await axios.get('/api/post/videos/all', { headers: { Authorization: `Bearer ${token}` } })
+        const { data } = await axios.get(`${process.env.REACT_APP_HOST}/api/post/videos/all`, { headers: { Authorization: `Bearer ${token}` } })
         return data
     }
 )
