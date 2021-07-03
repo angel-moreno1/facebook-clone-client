@@ -4,8 +4,8 @@ import { addUserPost } from './userSlice'
 
 export const loadManyPosts = createAsyncThunk(
     'posts/loadInitialPosts',
-    async ({token, page}, thunkApi) => {
-        const { data } = await axios.get(`${process.env.REACT_APP_HOST}/api/post?page=${page}`, { headers: { Authorization: `Bearer ${token}` } }) 
+    async ({ token, page }, thunkApi) => {
+        const { data } = await axios.get(`${process.env.REACT_APP_HOST}/api/post?page=${page}`, { headers: { Authorization: `Bearer ${token}` } })
         return data
     }
 )
@@ -18,7 +18,9 @@ export const cratePost = createAsyncThunk(
             postData,
             { headers: { Authorization: `Bearer ${token}` } }
         )
-        
+        console.log('si')
+        console.log(data)
+
         dispatch(addUserPost(data))
         socket.emit('newPost', data)
         return data
@@ -48,7 +50,7 @@ const postSlice = createSlice(
             },
             giveLike: (state, action) => {
                 state.posts.forEach(
-                    post => post._id === action.payload.postid ?  post.likes.push(action.payload.userid) : null
+                    post => post._id === action.payload.postid ? post.likes.push(action.payload.userid) : null
                 )
             },
             setPost: (state, action) => {
@@ -57,27 +59,27 @@ const postSlice = createSlice(
             giveLikePostLocal: (state, action) => {
                 state.posts.forEach(
                     post => {
-                        if(post._id === action.payload.id) {
-                            post.likes.push({user: action.payload.user, type: action.payload.type})
+                        if (post._id === action.payload.id) {
+                            post.likes.push({ user: action.payload.user, type: action.payload.type })
                         }
-                    } 
+                    }
                 )
             },
             unlike: (state, action) => {
                 state.posts.forEach(
                     post => {
-                        if(post._id === action.payload.id) {
+                        if (post._id === action.payload.id) {
                             post.likes = post.likes.filter(
                                 like => like.user !== action.payload.user
                             )
                         }
-                    } 
+                    }
                 )
             },
             updateCommentsLength: (state, action) => {
                 state.posts.forEach(
                     post => {
-                        if(post._id === action.payload.postId) {
+                        if (post._id === action.payload.postId) {
                             post.comments.push(action.payload.newId)
                         }
                     }

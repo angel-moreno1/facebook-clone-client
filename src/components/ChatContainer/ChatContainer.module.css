@@ -65,9 +65,18 @@
   left: 54%;
 }
 .submit {
-  width: 7% !important;
+  width: 7%  !important;
   cursor: pointer;
 }
 .submit:hover {
   background: rgb(204, 203, 203);
+}
+@media screen and (max-width: 800px) { 
+  .send_message {
+    width: 80%;
+  }
+  .submit {
+    width: 15% !important;
+    height: 40%  !important;
+  }
 }

@@ -25,9 +25,9 @@ const UserProfile = () => {
     const cachedPosts = posts
 
     useEffect(() => {
-        if(posts.length < 1 || cachedPosts.length !== posts.length ){
+        // if(posts.length < 1 || cachedPosts.length !== posts.length ){
             dispatch(loadUserPosts({id: user.id, token: user.token}))
-        }  
+        // }  
     }, [dispatch, posts.length])
 
     useEffect(() => {

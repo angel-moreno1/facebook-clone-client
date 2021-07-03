@@ -47,3 +47,13 @@ p {
 .audio {
   color: rgb(95, 151, 255);
 }
+@media screen and (max-width: 800px) { 
+  .chatCard {
+    width: 20%;
+    height: 100%;
+    border-right: 1px solid rgb(221, 221, 221);
+  }
+  .chatCard:hover {
+    background-color: rgba(72, 72, 72, 0.377);
+  }
+}
