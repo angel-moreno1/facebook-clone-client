@@ -4,7 +4,7 @@ import { addUserPost } from './userSlice'
 
 export const loadManyPosts = createAsyncThunk(
     'posts/loadInitialPosts',
-    async ({ token, page }, thunkApi) => {
+    async ({ token, page }, _thunkApi) => {
         const { data } = await axios.get(`${process.env.REACT_APP_HOST}/api/post?page=${page}`, { headers: { Authorization: `Bearer ${token}` } })
         return data
     }
@@ -18,9 +18,6 @@ export const cratePost = createAsyncThunk(
             postData,
             { headers: { Authorization: `Bearer ${token}` } }
         )
-        console.log('si')
-        console.log(data)
-
         dispatch(addUserPost(data))
         socket.emit('newPost', data)
         return data

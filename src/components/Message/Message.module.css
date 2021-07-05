@@ -14,11 +14,11 @@
   padding: 0.6rem;
   margin: 0.1rem 0;
   border-radius: 1rem 1rem 1rem 0;
-  animation: apperMsg 250ms
+  /* animation: apperMsg 250ms */
 }
 
 @keyframes apperMsg {
- from {
+  from {
     opacity: 0;
   }
   to {

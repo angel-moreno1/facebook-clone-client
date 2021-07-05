@@ -81,13 +81,6 @@ const ChatContainer = props => {
                             { chatId: currentConversationId, message: secure_url, ref: currentChat.chatRef, isFile: true, from: user.id }
                         )
                     })
-                // axios.post(`${process.env.REACT_APP_HOST}/upload`, data)
-                //     .then(({ data }) => {
-                //         socket.emit(
-                //             'messages',
-                //             {chatId: currentConversationId, message: data.location, ref: currentChat.chatRef, isFile: true  }
-                //         )
-                //     }) 
             })
     }
 
