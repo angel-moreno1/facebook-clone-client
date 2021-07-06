@@ -8,22 +8,18 @@
   display: flex;
 }
 .msg {
-  width: auto;
-  max-width: 50%;
   background-color: rgb(228, 230, 235);
   padding: 0.6rem;
-  margin: 0.1rem 0;
   border-radius: 1rem 1rem 1rem 0;
-  /* animation: apperMsg 250ms */
 }
-
-@keyframes apperMsg {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.msg_contanier {
+  width: auto;
+  max-width: 50%;
+  margin: 0.2rem 0;
+}
+.msg_date {
+  color: rgb(162, 162, 162);
+  font-size: 0.8rem;
 }
 
 .chat_img {

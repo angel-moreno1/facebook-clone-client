@@ -59,6 +59,11 @@ const chatSlice = createSlice(
             },
             setCurrentConversationId: (state, action) => {
                 state.currentConversationId = action.payload
+            },
+            targetChat: (state, action) => {
+                // state.latestMessages = state.latestMessages.filter(
+                //     ({ chatId }) => chatId !== action.payload 
+                // ) 
             }
         },
         extraReducers: {
@@ -103,7 +108,7 @@ const chatSlice = createSlice(
     }
 )
 
-export const { addNewMessage, setLatestMessagesFriend, setCurrentChat, setCurrentConversationId } = chatSlice.actions
+export const { addNewMessage, targetChat, setLatestMessagesFriend, setCurrentChat, setCurrentConversationId } = chatSlice.actions
 
 export const selectChats = state => state.chats
 

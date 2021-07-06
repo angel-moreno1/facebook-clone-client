@@ -1,6 +1,5 @@
 import Tippy from '@tippyjs/react'
 import moment from 'moment'
-import Skeleton from 'react-loading-skeleton'
 import styles from './Message.module.css'
 
 const Message = props => {
@@ -40,11 +39,10 @@ const Message = props => {
         return  (
                 <div className={styles.msg_container} style={{ justifyContent: 'flex-end' }}>
                     <Tippy content={moment(createdAt).format('DD-MM-YYYY hh:mm:ss')} placement='right'>
-                        {
-                            text
-                                ? <p style={{background: 'rgb(0, 132, 255)', color: 'white', borderRadius: '1rem 1rem 0rem 1rem'}} className={styles.msg}>{text}</p>
-                                : <Skeleton width={Math.floor(Math.random() * (300 - 100 + 1) ) + 100} height={35} style={{ borderRadius: '1rem' }}  />
-                        }
+                    <div  className={styles.msg_contanier}> 
+                       <p style={{background: 'rgb(0, 132, 255)', color: 'white', borderRadius: '1rem 1rem 0rem 1rem'}} className={styles.msg}>{text}</p>
+                       <p className={styles.msg_date} style={{textAlign: 'end'}}>{moment(createdAt).format('h:mm a')}</p>
+                    </div>
                     </Tippy>
                 </div>
         )
@@ -79,12 +77,12 @@ const Message = props => {
         }
         return (
             <div className={styles.msg_container}>
-                <Tippy content={moment(createdAt).format('DD-MM-YYYY hh:mm:ss')} placement='left'>
-                    {
-                        text
-                            ? <p className={styles.msg}>{text}</p>
-                            : <Skeleton width={Math.floor(Math.random() * (300 - 100 + 1) ) + 100} height={35} style={{ borderRadius: '1rem' }}  />
-                        }
+                <Tippy content={moment(createdAt).format('dddd, MMMM Do YYYY, h:mm:ss a')} placement='left'>
+                    <div className={styles.msg_contanier}> 
+                         <p className={styles.msg}>{text}</p>
+                         <p className={styles.msg_date}>{moment(createdAt).format('h:mm a')}</p>
+                    </div>
+                  
                 </Tippy>
             </div>       
         )

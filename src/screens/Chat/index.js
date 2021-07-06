@@ -23,7 +23,7 @@ const Chats = () => {
 
     const changedCurrentConversation = id => void dispatch(setCurrentConversationId(id))
     
-    useEffect(() => { document.title = 'Chats' }, [])
+    useEffect(() => document.title = 'Chats' , [])
 
     useEffect(() => { 
         if(currentChat.chatRef) {

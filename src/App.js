@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectUser } from './features/userSlice'
-import { addNewMessage, loadLatestChats, selectChats } from './features/chatSlice'
+import { addNewMessage, loadLatestChats, selectChats, targetChat } from './features/chatSlice'
 import Main from './screens/Main'
 import Home from './screens/Home'
 import Verification from './screens/Verification'
@@ -16,15 +16,15 @@ import socketContext from './components/useSocketContext'
 import PrivateRoute from './components/PrivateRouter'
 import SinglePost from './components/SinglePost'
 import { UserFriends, UserInformation, UserPhotos } from './components/UserProfile'
-import { I18Provider, LOCALES } from './i18n'
+import { I18Provider } from './i18n'
 import { clearNotification, newNotification } from './features/notifySlice'
 import Notify from './components/notify'
 
 const App = () => {
   
   const user = useSelector(selectUser)
-  const { socket } = useContext(socketContext)
   const dispatch = useDispatch()
+  const { socket } = useContext(socketContext)
   const { currentChat } = useSelector(selectChats)
   const { language } = useSelector(state => state.lenguage)
   const [ showNotify, setShowNotify ] = useState(false)
@@ -40,7 +40,8 @@ const App = () => {
         if(currentChat.messages) {
             dispatch(addNewMessage({msg, chatId, isFile}))
             const localUser = JSON.parse(localStorage.getItem('user'))   
-            dispatch(loadLatestChats({id: localUser.id, token: localUser.token})) 
+            dispatch(loadLatestChats({id: localUser.id, token: localUser.token}))
+            dispatch(targetChat(chatId))
         }
       }
     })
